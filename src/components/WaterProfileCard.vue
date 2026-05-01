@@ -12,7 +12,7 @@
         {{ t('water_guide.edit') }}
       </AppButton>
     </div>
-    <template v-if="!editing">
+    <template>
       <div class="grid grid-cols-3 my-4">
         <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
           <div class="text-base font-bold leading-snug" :class="hardnessBadgeClass">
