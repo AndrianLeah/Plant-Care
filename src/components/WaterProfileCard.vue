@@ -13,9 +13,9 @@
       </AppButton>
     </div>
     <template v-if="!editing">
-      <div class="grid grid-cols-3 my-6">
-        <div class="flex flex-col items-center justify-center px-3 py-6 text-center">
-          <div class="text-xl font-bold leading-tight" :class="hardnessBadgeClass">
+      <div class="grid grid-cols-3 my-4">
+        <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
+          <div class="text-base font-bold leading-snug" :class="hardnessBadgeClass">
             {{ t(`water_guide.hardness_badge.${waterStore.profile.level}`) }}
           </div>
           <div class="text-xs text-slate-500 mt-1.5">
@@ -26,14 +26,14 @@
             }}
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center px-3 py-6 text-center">
-          <div class="text-xl font-bold text-amber-600 leading-tight">{{ phLabel }}</div>
+        <div class="flex flex-col items-center justify-center px-1 py-4 text-center border-x border-slate-100">
+          <div class="text-base font-bold text-amber-600 leading-snug">{{ phLabel }}</div>
           <div class="text-xs text-slate-500 mt-1.5">
             {{ waterStore.profile.ph ? 'pH ' + displayPhLabel : 'pH n/a' }}
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center px-3 py-6 text-center">
-          <div class="text-xl font-bold text-amber-700 leading-tight">
+        <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
+          <div class="text-base font-bold text-amber-700 leading-snug">
             {{ t(`water_guide.mineral_label.${waterStore.profile.level}`) }}
           </div>
           <div class="text-xs text-slate-500 mt-1.5">
@@ -97,93 +97,36 @@
               {{ t('water_guide.select_city_db') }}
             </p>
 
-            <div ref="cityComboboxRef" class="relative">
-              <!-- Selected state -->
-              <button
-                v-if="selectedCityPreset && !isSearchingCity"
-                class="w-full flex items-center gap-3 px-4 py-3 bg-cyan-50 border border-cyan-200 rounded-2xl hover:bg-cyan-100 transition-colors text-left group"
-                @click="openCitySearch"
-              >
-                <i class="mdi mdi-database-check-outline text-cyan-500 text-base flex-shrink-0" />
-                <span class="flex-1 text-sm font-semibold text-slate-800 min-w-0 truncate">
-                  {{ selectedCityPreset.name }}
-                </span>
-                <span class="text-xs text-slate-500 flex-shrink-0">
-                  {{ selectedCityPreset.region }}
-                </span>
-                <span class="text-xs font-semibold text-slate-500 flex-shrink-0 ml-1">
-                  {{ selectedCityPreset.hardnessMgL }} mg/L
-                </span>
-                <i
-                  class="mdi mdi-close text-slate-400 text-base flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-1"
-                  @click.stop="clearSelectedCity"
-                />
-              </button>
+            <!-- Selected city chip -->
+            <button
+              v-if="selectedCityPreset && !isSearchingCity"
+              class="w-full flex items-center gap-3 px-4 py-3 bg-cyan-50 border border-cyan-200 rounded-2xl hover:bg-cyan-100 transition-colors text-left group"
+              @click="openCitySearch"
+            >
+              <i class="mdi mdi-database-check-outline text-cyan-500 text-base flex-shrink-0" />
+              <span class="flex-1 text-sm font-semibold text-slate-800 min-w-0 truncate">
+                {{ selectedCityPreset.name }}
+              </span>
+              <span class="text-xs text-slate-500 flex-shrink-0">{{ selectedCityPreset.region }}</span>
+              <span class="text-xs font-semibold text-slate-500 flex-shrink-0 ml-1">
+                {{ selectedCityPreset.hardnessMgL }} mg/L
+              </span>
+              <i
+                class="mdi mdi-close text-slate-400 text-base flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-1"
+                @click.stop="clearSelectedCity"
+              />
+            </button>
 
-              <!-- Search state -->
-              <div
-                v-else
-                class="flex items-center gap-3 px-4 py-3 bg-white border border-slate-200 rounded-2xl transition-all cursor-text"
-                :class="isSearchingCity ? 'ring-2 ring-cyan-300 border-transparent' : ''"
-                @click="citySearchInput?.focus()"
-              >
-                <i
-                  class="mdi mdi-database-search-outline text-slate-400 text-base flex-shrink-0"
-                />
-                <input
-                  ref="citySearchInput"
-                  v-model="citySearch"
-                  type="text"
-                  :placeholder="t('water_guide.select_city_placeholder')"
-                  class="flex-1 text-sm text-slate-700 placeholder:text-slate-400 bg-transparent outline-none min-w-0"
-                  @focus="onCitySearchFocus"
-                />
-                <i
-                  v-if="citySearch"
-                  class="mdi mdi-close text-slate-300 text-base cursor-pointer flex-shrink-0"
-                  @mousedown.prevent="citySearch = ''"
-                />
-                <i v-else class="mdi mdi-chevron-down text-slate-300 text-base flex-shrink-0" />
-              </div>
-
-              <Transition name="fade">
-                <div
-                  v-if="showCityDropdown && isSearchingCity"
-                  class="absolute z-20 mt-2 w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
-                >
-                  <div class="max-h-56 overflow-y-auto">
-                    <template v-if="filteredCityGroups.length > 0">
-                      <template v-for="group in filteredCityGroups" :key="group.region">
-                        <div
-                          class="px-4 py-2 text-[10px] font-semibold text-slate-500 uppercase tracking-widest bg-slate-50 sticky top-0 z-10"
-                        >
-                          {{ group.region }}
-                        </div>
-                        <button
-                          v-for="city in group.cities"
-                          :key="city.name"
-                          class="w-full flex items-center justify-between px-4 py-3 text-sm text-left transition-colors"
-                          :class="
-                            editCity === city.name
-                              ? 'text-cyan-700 font-semibold bg-cyan-50'
-                              : 'text-slate-700 hover:bg-slate-50'
-                          "
-                          @mousedown.prevent="selectCity(city)"
-                        >
-                          <span>{{ city.name }}</span>
-                          <span class="text-xs text-slate-500 ml-2 flex-shrink-0">
-                            {{ city.hardnessMgL }} mg/L
-                          </span>
-                        </button>
-                      </template>
-                    </template>
-                    <div v-else class="px-4 py-4 text-sm text-slate-500 text-center">
-                      {{ t('water_guide.select_city_no_results') }}
-                    </div>
-                  </div>
-                </div>
-              </Transition>
-            </div>
+            <!-- Search trigger (closed state) -->
+            <button
+              v-else
+              class="w-full flex items-center gap-3 px-4 py-3 bg-white border border-slate-200 rounded-2xl transition-all text-left"
+              @click="openCitySearch"
+            >
+              <i class="mdi mdi-database-search-outline text-slate-400 text-base flex-shrink-0" />
+              <span class="flex-1 text-sm text-slate-400 min-w-0">{{ t('water_guide.select_city_placeholder') }}</span>
+              <i class="mdi mdi-chevron-down text-slate-300 text-base flex-shrink-0" />
+            </button>
           </div>
 
           <!-- Hardness level chips -->
@@ -313,10 +256,82 @@
       </div>
     </Transition>
   </Teleport>
+
+  <!-- City search: fullscreen overlay above the edit overlay -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div
+        v-if="isSearchingCity"
+        class="fixed inset-0 z-[210] flex flex-col bg-white"
+        style="padding-bottom: env(safe-area-inset-bottom)"
+      >
+        <!-- Search input pinned to top -->
+        <div
+          class="flex items-center gap-3 px-4 py-3 border-b border-slate-100 flex-shrink-0 bg-white"
+          style="padding-top: max(0.75rem, env(safe-area-inset-top))"
+        >
+          <i class="mdi mdi-database-search-outline text-slate-400 text-lg flex-shrink-0" />
+          <input
+            ref="citySearchInput"
+            v-model="citySearch"
+            type="text"
+            :placeholder="t('water_guide.select_city_placeholder')"
+            class="flex-1 text-sm text-slate-700 placeholder:text-slate-400 bg-transparent outline-none min-w-0 py-2"
+            autofocus
+          />
+          <button
+            v-if="citySearch"
+            class="flex-shrink-0 text-slate-400"
+            @mousedown.prevent="citySearch = ''"
+          >
+            <i class="mdi mdi-close text-lg" />
+          </button>
+          <button
+            class="flex-shrink-0 text-slate-500 font-medium text-sm px-2 py-1"
+            @mousedown.prevent="closeCitySearch"
+          >
+            {{ t('water_guide.cancel') }}
+          </button>
+        </div>
+
+        <!-- Scrollable results -->
+        <div class="flex-1 overflow-y-auto">
+          <template v-if="filteredCityGroups.length > 0">
+            <template v-for="group in filteredCityGroups" :key="group.region">
+              <div
+                class="px-4 py-2 text-[10px] font-semibold text-slate-500 uppercase tracking-widest bg-slate-50 sticky top-0 z-10"
+              >
+                {{ group.region }}
+              </div>
+              <button
+                v-for="city in group.cities"
+                :key="city.name"
+                class="w-full flex items-center justify-between px-4 py-3 text-sm text-left transition-colors border-b border-slate-50"
+                :class="
+                  editCity === city.name
+                    ? 'text-cyan-700 font-semibold bg-cyan-50'
+                    : 'text-slate-700 active:bg-slate-50'
+                "
+                @mousedown.prevent="selectCity(city)"
+              >
+                <span>{{ city.name }}</span>
+                <span class="text-xs text-slate-500 ml-2 flex-shrink-0">
+                  {{ city.hardnessMgL }} mg/L
+                </span>
+              </button>
+            </template>
+          </template>
+          <div v-else class="px-4 py-8 text-sm text-slate-500 text-center">
+            {{ t('water_guide.select_city_no_results') }}
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
-import { onClickOutside, refDebounced } from '@vueuse/core'
+import { refDebounced } from '@vueuse/core'
 import { filter, find, flatMap } from 'lodash'
 import { computed, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -400,15 +415,8 @@ const editMg = ref<number | undefined>(undefined)
 
 const citySearch = ref('')
 const citySearchDebounced = refDebounced(citySearch, 150)
-const showCityDropdown = ref(false)
 const isSearchingCity = ref(false)
 const citySearchInput = ref<HTMLInputElement | null>(null)
-const cityComboboxRef = ref<HTMLElement | null>(null)
-
-onClickOutside(cityComboboxRef, () => {
-  isSearchingCity.value = false
-  showCityDropdown.value = false
-})
 
 const selectedCityPreset = computed(
   () => find(flatMap(ITALIAN_CITIES_BY_REGION, 'cities'), { name: editCity.value }) ?? null,
@@ -470,11 +478,6 @@ function onMgLInput() {
   }
 }
 
-function onCitySearchFocus() {
-  isSearchingCity.value = true
-  showCityDropdown.value = true
-}
-
 function selectCity(city: ItalianCityPreset) {
   editCity.value = city.name
   editLevel.value = city.level
@@ -485,14 +488,17 @@ function selectCity(city: ItalianCityPreset) {
   showAdvanced.value = true
   citySearch.value = ''
   isSearchingCity.value = false
-  showCityDropdown.value = false
 }
 
 function openCitySearch() {
   citySearch.value = ''
   isSearchingCity.value = true
-  showCityDropdown.value = true
   nextTick(() => citySearchInput.value?.focus())
+}
+
+function closeCitySearch() {
+  isSearchingCity.value = false
+  citySearch.value = ''
 }
 
 function clearSelectedCity() {
