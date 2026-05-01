@@ -12,8 +12,7 @@
         {{ t('water_guide.edit') }}
       </AppButton>
     </div>
-    <template>
-      <div class="grid grid-cols-3 my-4">
+    <div class="grid grid-cols-3 my-4">
         <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
           <div class="text-base font-bold leading-snug" :class="hardnessBadgeClass">
             {{ t(`water_guide.hardness_badge.${waterStore.profile.level}`) }}
@@ -49,7 +48,6 @@
         class="text-sm text-slate-600 leading-relaxed"
         v-html="t(`water_guide.level_desc.${waterStore.profile.level}`)"
       />
-    </template>
 
   </div>
 
