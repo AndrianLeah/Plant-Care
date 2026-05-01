@@ -1,6 +1,9 @@
 <template>
   <!-- Empty state: full-screen centered layout -->
-  <div v-if="store.sortedPlants.length === 0" class="min-h-screen flex flex-col items-center justify-center px-6 text-center gap-5">
+  <div
+    v-if="store.sortedPlants.length === 0"
+    class="min-h-screen flex flex-col items-center justify-center px-6 text-center gap-5"
+  >
     <i class="mdi mdi-sprout text-leaf-300" style="font-size: 5rem" />
     <div>
       <h2 class="text-2xl font-bold text-slate-900 mb-2">{{ t('home.empty_title') }}</h2>

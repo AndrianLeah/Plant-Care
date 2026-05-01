@@ -6,15 +6,14 @@ export default {
     settings: 'Impostazioni',
   },
   home: {
-    time_morning: 'mattina',
-    time_afternoon: 'pomeriggio',
-    time_evening: 'sera',
-    greeting: 'Buona {time},',
+    time_morning: 'Buongiorno',
+    time_afternoon: 'Buon pomeriggio',
+    time_evening: 'Buona sera',
+    greeting: '{time},',
     title: 'Le tue piante',
-    empty_title: 'Nessuna pianta ancora',
+    empty_title: 'Ancora nessuna pianta',
     empty_body: 'Aggiungi la tua prima pianta e inizia a seguirne la cura.',
     add_plant: 'Aggiungi una pianta',
-    add_plant_hint: 'Aggiungi una nuova pianta alla tua collezione',
   },
   add: {
     title: 'Aggiungi una pianta',
@@ -115,9 +114,8 @@ export default {
     watering_section: 'Irrigazione',
     every_days: 'Ogni {min}–{max} giorni',
     water_quality: "Qualità dell'acqua",
-    water_tolerance_label: 'Questa pianta tollera',
     water_warning_title: "L'acqua del rubinetto potrebbe stressare questa pianta",
-    water_warning_sub: 'Usa alternative più soft quando possibile',
+    water_warning_sub: 'Usa alternative più delicate quando possibile',
     water_ok_title: "L'acqua del rubinetto va bene per questa pianta",
     water_ok_sub: 'Nessuna preparazione speciale necessaria',
     water_opt_rainwater: 'Acqua piovana',
@@ -131,8 +129,6 @@ export default {
       "L'acqua di {city} può causare punte brune nel tempo. Meglio filtrata o piovana.",
     water_tip_tolerant:
       "L'acqua di {city} è al limite per questa pianta. Lasciarla riposare una notte aiuta.",
-    water_warning:
-      "L'acqua del rubinetto ({city}) potrebbe essere troppo dura per questa pianta. Considera acqua filtrata o piovana.",
     your_tap: 'il tuo rubinetto',
     light_section: 'Luce',
     problems_section: 'Problemi comuni',
@@ -143,7 +139,6 @@ export default {
     watering_avg: 'Media ogni {n} giorni',
     remove: 'Rimuovi pianta',
     not_found: 'Pianta non trovata.',
-    confirm_delete: 'Rimuovere "{name}"?',
     delete_title: 'Rimuovere "{name}"?',
     delete_body:
       'Tutti i dati di annaffiatura, umidità e cura relativi a questa pianta saranno eliminati definitivamente.',
@@ -188,16 +183,7 @@ export default {
   water_guide: {
     title: "Guida all'acqua",
     subtitle: 'Personalizzata per la qualità della tua acqua locale',
-    rimini_title: 'Acqua del rubinetto di Rimini',
-    rimini_source: 'Fonte: acquifero costiero adriatico',
-    very_hard: 'Molto dura',
-    slightly_alkaline: 'Leggermente alcalina',
-    mineral_rich: 'Ricca di minerali',
-    rimini_desc:
-      "L'acqua del rubinetto di Rimini è <strong>molto dura</strong>: tra le più dure d'Italia. Ottima da bere, ma può stressare le piante sensibili nel tempo, causando depositi bianchi nel terreno, punte brune e blocco dell'assorbimento radicale.",
     which_water: 'Quale acqua usare?',
-    quick_reference: 'Riferimento rapido per pianta',
-    tips_title: 'Consigli pratici per Rimini',
     tips_title_generic: 'Consigli pratici',
     tips_title_city: 'Consigli pratici per {city}',
     profile_card_title: 'La tua acqua del rubinetto',
@@ -265,7 +251,7 @@ export default {
     tips: [
       '<strong>Raccogli acqua piovana</strong>: ideale, gratuita, le piante la adorano. Tieni un piccolo contenitore sul balcone.',
       "<strong>Filtra l'acqua del rubinetto</strong>: un filtro a caraffa con carbone attivo (es. Brita) rimuove il cloro e riduce leggermente la durezza.",
-      "<strong>Lascia riposare l'acqua overnight</strong>: lascia l'acqua in un contenitore aperto per 12–24h per far evaporare il cloro. NON riduce la durezza ma aiuta le piante sensibili.",
+      "<strong>Lascia riposare l'acqua una notte</strong>: lascia l'acqua in un contenitore aperto per 12–24 ore per far evaporare il cloro. NON riduce la durezza ma aiuta le piante sensibili.",
       "<strong>Usa acqua distillata o osmosi inversa</strong> per Calatea e Fico Lyrata. Queste due soffriranno con l'acqua di {city}.",
       '<strong>Risciacqua il terreno periodicamente</strong>: versa molta acqua nel vaso ogni qualche mese per eliminare accumuli di sali e minerali.',
       "<strong>Annaffia a temperatura ambiente</strong>: l'acqua fredda del rubinetto può scioccare le piante tropicali. Lasciala raggiungere la temperatura ambiente prima dell'uso.",
@@ -336,13 +322,13 @@ export default {
     'monstera-deliciosa': {
       name: 'Monstera',
       description:
-        'Il iconico filodendro dalle foglie spaccate. Una delle piante da appartamento più popolari. Scenografica, a crescita rapida e tollerante.',
+        "L'iconico filodendro dalle foglie spaccate. Una delle piante da appartamento più popolari. Scenografica, a crescita rapida e tollerante.",
       moistureNotes:
         "Lascia asciugare i primi 2–3 cm di terreno tra un'annaffiatura e l'altra. L'eccesso d'acqua è il killer numero 1. Le radici marciscono rapidamente in un terreno fradicio.",
       lightNotes:
         'Prospera in luce brillante indiretta. Tollera luce più bassa ma la crescita rallenterà. Evita il sole diretto intenso che brucia le foglie.',
       waterTips:
-        "Tollera acqua moderatamente dura ma beneficia di acqua filtrata o piovana nel tempo. A Rimini (acqua molto dura ~400 mg/L) considera l'uso di acqua filtrata o lascia riposare l'acqua overnight per disperdere il cloro.",
+        "Tollera acqua moderatamente dura ma beneficia di acqua filtrata o piovana nel tempo. A Rimini (acqua molto dura ~400 mg/L) considera l'uso di acqua filtrata o lascia riposare l'acqua per una notte per far evaporare il cloro.",
       commonProblems: [
         'Foglie gialle → innaffiatura eccessiva o troppo sole diretto',
         "Punte brune → umidità bassa o fluoro nell'acqua dura",

@@ -14,7 +14,6 @@ export default {
     empty_title: 'No plants yet',
     empty_body: 'Add your first plant and start tracking its care.',
     add_plant: 'Add a plant',
-    add_plant_hint: 'Track a new plant in your collection',
   },
   add: {
     title: 'Add a plant',
@@ -113,7 +112,6 @@ export default {
     watering_section: 'Watering',
     every_days: 'Every {min}–{max} days',
     water_quality: 'Water quality',
-    water_tolerance_label: 'This plant tolerates',
     water_warning_title: 'Your tap water may stress this plant',
     water_warning_sub: 'Use softer alternatives when possible',
     water_ok_title: 'Your tap water is fine for this plant',
@@ -129,8 +127,6 @@ export default {
       '{city} tap water may cause browning over time. Filtered or rainwater is better.',
     water_tip_tolerant:
       '{city} tap water is borderline for this plant. Letting it rest overnight helps.',
-    water_warning:
-      'Your tap water ({city}) may be too hard for this plant. Consider using filtered or rainwater.',
     your_tap: 'your tap',
     light_section: 'Light',
     problems_section: 'Common problems',
@@ -141,7 +137,6 @@ export default {
     watering_avg: 'Avg every {n} days',
     remove: 'Remove plant',
     not_found: 'Plant not found.',
-    confirm_delete: 'Remove "{name}"?',
     delete_title: 'Remove "{name}"?',
     delete_body:
       'All watering logs, moisture records and care data for this plant will be permanently deleted.',
@@ -186,16 +181,7 @@ export default {
   water_guide: {
     title: 'Water Guide',
     subtitle: 'Tailored for your local tap water',
-    rimini_title: 'Rimini Tap Water',
-    rimini_source: 'Source: Adriatic coastal aquifer',
-    very_hard: 'Very Hard',
-    slightly_alkaline: 'Slightly alkaline',
-    mineral_rich: 'Mineral-rich',
-    rimini_desc:
-      'Rimini tap water is <strong>very hard</strong>: among the hardest in Italy. This is great for drinking but can stress sensitive houseplants over time, causing white salt deposits on soil, brown leaf tips, and blocked root uptake.',
     which_water: 'Which water to use?',
-    quick_reference: 'Quick reference by plant',
-    tips_title: 'Practical tips for Rimini',
     tips_title_generic: 'Practical tips',
     tips_title_city: 'Practical tips for {city}',
     profile_card_title: 'Your Tap Water',
@@ -258,12 +244,12 @@ export default {
         "Your tap water is <strong>moderately hard</strong>: fine for most houseplants. Sensitive species like Calathea may benefit from filtered or rainwater over time, but it won't cause immediate harm.",
       hard: 'Your tap water is <strong>hard</strong>: it can stress sensitive plants over time, causing white deposits and brown leaf tips. Use filtered or rainwater for Calathea and Fiddle-Leaf Fig. Tolerant plants like Pothos and Snake Plant handle it well.',
       'very-hard':
-        'Your tap water is <strong>very hard</strong>: among the hardest found anywhere. This is great for drinking but can stress sensitive houseplants over time, causing white salt deposits on soil, brown leaf tips, and blocked root uptake.',
+        'Your tap water is <strong>very hard</strong>: among the hardest found anywhere. This is great for drinking but can stress sensitive houseplants over time, causing white salt deposits on soil, brown leaf tips, and impaired nutrient uptake.',
     },
     tips: [
       '<strong>Collect rainwater</strong>: ideal, free, and plants love it. Keep a small container on the balcony.',
       '<strong>Filter tap water</strong>: a basic activated-carbon jug filter (e.g. Brita) removes chlorine and reduces hardness slightly.',
-      '<strong>Let water rest overnight</strong>: leave tap water in an open container for 12–24h to let chlorine evaporate. Does NOT reduce hardness but helps sensitive plants.',
+      '<strong>Let water rest overnight</strong>: leave tap water in an open container for 12–24h to let chlorine evaporate. Does NOT reduce hardness, but removing chlorine still benefits sensitive plants.',
       '<strong>Use distilled or RO water</strong> for Calathea and Fiddle-Leaf Fig specifically. These two will suffer with {city} tap water.',
       '<strong>Flush the soil occasionally</strong>: pour plenty of water through the pot every few months to wash out salt/mineral buildup.',
       '<strong>Water at room temperature</strong>: cold water from the tap can shock tropical plants. Let it reach room temp first.',

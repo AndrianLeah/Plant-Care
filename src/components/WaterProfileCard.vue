@@ -13,42 +13,43 @@
       </AppButton>
     </div>
     <div class="grid grid-cols-3 my-4">
-        <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
-          <div class="text-base font-bold leading-snug" :class="hardnessBadgeClass">
-            {{ t(`water_guide.hardness_badge.${waterStore.profile.level}`) }}
-          </div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            {{
-              waterStore.profile.hardnessMgL
-                ? displayMgLLabel + ' mg/L'
-                : LEVEL_RANGES[waterStore.profile.level]
-            }}
-          </div>
+      <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
+        <div class="text-base font-bold leading-snug" :class="hardnessBadgeClass">
+          {{ t(`water_guide.hardness_badge.${waterStore.profile.level}`) }}
         </div>
-        <div class="flex flex-col items-center justify-center px-1 py-4 text-center border-x border-slate-100">
-          <div class="text-base font-bold text-amber-600 leading-snug">{{ phLabel }}</div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            {{ waterStore.profile.ph ? 'pH ' + displayPhLabel : 'pH n/a' }}
-          </div>
-        </div>
-        <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
-          <div class="text-base font-bold text-amber-700 leading-snug">
-            {{ t(`water_guide.mineral_label.${waterStore.profile.level}`) }}
-          </div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            {{
-              waterStore.profile.caMgL || waterStore.profile.mgMgL
-                ? caMgLabel + ' mg/L'
-                : t(`water_guide.mineral_sublabel.${waterStore.profile.level}`)
-            }}
-          </div>
+        <div class="text-xs text-slate-500 mt-1.5">
+          {{
+            waterStore.profile.hardnessMgL
+              ? displayMgLLabel + ' mg/L'
+              : LEVEL_RANGES[waterStore.profile.level]
+          }}
         </div>
       </div>
       <div
-        class="text-sm text-slate-600 leading-relaxed"
-        v-html="t(`water_guide.level_desc.${waterStore.profile.level}`)"
-      />
-
+        class="flex flex-col items-center justify-center px-1 py-4 text-center border-x border-slate-100"
+      >
+        <div class="text-base font-bold text-amber-600 leading-snug">{{ phLabel }}</div>
+        <div class="text-xs text-slate-500 mt-1.5">
+          {{ waterStore.profile.ph ? 'pH ' + displayPhLabel : 'pH n/a' }}
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center px-1 py-4 text-center">
+        <div class="text-base font-bold text-amber-700 leading-snug">
+          {{ t(`water_guide.mineral_label.${waterStore.profile.level}`) }}
+        </div>
+        <div class="text-xs text-slate-500 mt-1.5">
+          {{
+            waterStore.profile.caMgL || waterStore.profile.mgMgL
+              ? caMgLabel + ' mg/L'
+              : t(`water_guide.mineral_sublabel.${waterStore.profile.level}`)
+          }}
+        </div>
+      </div>
+    </div>
+    <div
+      class="text-sm text-slate-600 leading-relaxed"
+      v-html="t(`water_guide.level_desc.${waterStore.profile.level}`)"
+    />
   </div>
 
   <!-- Edit mode: full-screen overlay (covers bottom nav and keyboard) -->
@@ -105,7 +106,9 @@
               <span class="flex-1 text-sm font-semibold text-slate-800 min-w-0 truncate">
                 {{ selectedCityPreset.name }}
               </span>
-              <span class="text-xs text-slate-500 flex-shrink-0">{{ selectedCityPreset.region }}</span>
+              <span class="text-xs text-slate-500 flex-shrink-0">
+                {{ selectedCityPreset.region }}
+              </span>
               <span class="text-xs font-semibold text-slate-500 flex-shrink-0 ml-1">
                 {{ selectedCityPreset.hardnessMgL }} mg/L
               </span>
@@ -122,39 +125,40 @@
               @click="openCitySearch"
             >
               <i class="mdi mdi-database-search-outline text-slate-400 text-base flex-shrink-0" />
-              <span class="flex-1 text-sm text-slate-400 min-w-0">{{ t('water_guide.select_city_placeholder') }}</span>
+              <span class="flex-1 text-sm text-slate-400 min-w-0">
+                {{ t('water_guide.select_city_placeholder') }}
+              </span>
               <i class="mdi mdi-chevron-down text-slate-300 text-base flex-shrink-0" />
             </button>
           </div>
 
           <!-- Hardness level chips -->
           <div>
-          <div class="text-sm font-medium text-slate-500 mb-3">
-            {{ t('water_guide.hardness_level') }}
-          </div>
-          <div class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-2">
-            <button
-              v-for="level in HARDNESS_LEVELS"
-              :key="level"
-              class="w-full inline-flex flex-col items-center px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-150 active:scale-95"
-              :class="
-                editLevel === level
-                  ? levelChipActiveClass(level)
-                  : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'
-              "
-              @click="selectPreset(level)"
-            >
-              <span class="flex items-center gap-1">
-                <i class="mdi text-sm" :class="levelIcon(level)" />
-                {{ t(`water_guide.levels.${level}`) }}
-                <i v-if="editLevel === level" class="mdi mdi-check text-[11px]" />
-              </span>
-              <span class="text-[10px] font-normal opacity-60 mt-0.5">
-                {{ LEVEL_RANGES[level] }}
-              </span>
-            </button>
-          </div>
-
+            <div class="text-sm font-medium text-slate-500 mb-3">
+              {{ t('water_guide.hardness_level') }}
+            </div>
+            <div class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-2">
+              <button
+                v-for="level in HARDNESS_LEVELS"
+                :key="level"
+                class="w-full inline-flex flex-col items-center px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-150 active:scale-95"
+                :class="
+                  editLevel === level
+                    ? levelChipActiveClass(level)
+                    : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'
+                "
+                @click="selectPreset(level)"
+              >
+                <span class="flex items-center gap-1">
+                  <i class="mdi text-sm" :class="levelIcon(level)" />
+                  {{ t(`water_guide.levels.${level}`) }}
+                  <i v-if="editLevel === level" class="mdi mdi-check text-[11px]" />
+                </span>
+                <span class="text-[10px] font-normal opacity-60 mt-0.5">
+                  {{ LEVEL_RANGES[level] }}
+                </span>
+              </button>
+            </div>
           </div>
 
           <!-- Precise values toggle + fields grouped together -->
@@ -178,7 +182,7 @@
               @leave="onAdvancedLeave"
               @after-leave="onAdvancedAfterLeave"
             >
-            <div v-if="showAdvanced" class="grid grid-cols-2 gap-4">
+              <div v-if="showAdvanced" class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_mgl') }}
@@ -233,7 +237,7 @@
                     class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                   />
                 </div>
-            </div>
+              </div>
             </Transition>
           </div>
 
