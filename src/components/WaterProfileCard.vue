@@ -77,9 +77,9 @@
         </div>
 
         <!-- Scrollable form body -->
-        <div class="flex-1 overflow-y-auto px-5 py-5 space-y-0">
+        <div class="flex-1 overflow-y-auto px-5 py-5 space-y-6">
           <!-- City name field -->
-          <div class="mb-6">
+          <div>
             <label class="text-sm font-medium text-slate-500 block mb-1.5">
               {{ t('water_guide.field_city') }}
             </label>
@@ -128,10 +128,11 @@
           </div>
 
           <!-- Hardness level chips -->
-          <div class="text-sm font-medium text-slate-500 mb-2">
+          <div>
+          <div class="text-sm font-medium text-slate-500 mb-3">
             {{ t('water_guide.hardness_level') }}
           </div>
-          <div class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-2 mb-6">
+          <div class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-2">
             <button
               v-for="level in HARDNESS_LEVELS"
               :key="level"
@@ -154,9 +155,11 @@
             </button>
           </div>
 
+          </div>
+
           <!-- Precise values toggle -->
           <button
-            class="flex items-center gap-2 w-full text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors mt-2 mb-1 py-3 px-1"
+            class="flex items-center gap-2 w-full text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors py-3 px-1"
             @click="showAdvanced = !showAdvanced"
           >
             <i
@@ -174,8 +177,7 @@
             @leave="onAdvancedLeave"
             @after-leave="onAdvancedAfterLeave"
           >
-            <div v-if="showAdvanced" class="space-y-0 mb-6">
-              <div class="grid grid-cols-2 gap-4">
+            <div v-if="showAdvanced" class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_mgl') }}
@@ -230,12 +232,11 @@
                     class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                   />
                 </div>
-              </div>
             </div>
           </Transition>
 
           <!-- Action buttons -->
-          <div class="flex gap-2 pt-2 pb-4">
+          <div class="flex gap-2 pb-4">
             <AppButton
               variant="primary"
               color="cyan"
