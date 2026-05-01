@@ -1,16 +1,22 @@
 # Plant Care
 
-A desktop app for tracking and caring for your houseplants — built with Vue 3, Tauri, and Tailwind CSS.
+<p align="center">
+  <img src="public/app-icon.svg" width="96" height="96" alt="Plant Care icon" />
+</p>
+
+A desktop app for tracking and caring for your houseplants, built with Vue 3, Tauri, and Tailwind CSS.
+
+**[Live demo on GitHub Pages](https://andrianleah.github.io/Plant-Care/)**
 
 ## Features
 
-- **Plant collection** — add plants from a catalog of 21 common houseplant species, give them a nickname and location
-- **Watering log** — log waterings and see a chart of your history; get an estimated next-watering date
-- **Moisture log** — track soil moisture level over time with per-species guidance on what to look for
-- **Species catalog** — browse all supported species with photos, care details, light and water requirements
-- **Water quality guide** — configure your local tap water profile (hardness, pH, minerals) and get per-plant compatibility advice
-- **Bilingual** — English and Italian interface
-- **Dark-friendly** — glassmorphism UI that adapts to the OS theme
+- **Plant collection** - add plants from a catalog of 21 common houseplant species, give them a nickname and location
+- **Watering log** - log waterings and see a chart of your history; get an estimated next-watering date
+- **Moisture log** - track soil moisture level over time with per-species guidance on what to look for
+- **Species catalog** - browse all supported species with photos, care details, light and water requirements
+- **Water quality guide** - configure your local tap water profile (hardness, pH, minerals) and get per-plant compatibility advice
+- **Bilingual** - English and Italian interface
+- **Dark-friendly** - glassmorphism UI that adapts to the OS theme
 
 ## Tech Stack
 
@@ -62,7 +68,7 @@ npm run tauri build
 ### Other scripts
 
 ```bash
-npm run format          # Prettier — formats src/**/*.{ts,vue,css}
+npm run format          # Prettier - formats src/**/*.{ts,vue,css}
 npm run optimize-images # Compress species photos in assets/species/
 ```
 
@@ -70,9 +76,9 @@ npm run optimize-images # Compress species photos in assets/species/
 
 ```
 src/
-  views/          # Page-level components (Home, Catalog, PlantDetail, …)
+  views/          # Page-level components (Home, Catalog, PlantDetail, ...)
   components/     # Reusable UI components
-  composables/    # Vue composables (useWaterWarning, usePlantImage, …)
+  composables/    # Vue composables (useWaterWarning, usePlantImage, ...)
   stores/         # Pinia stores (plants, waterProfile)
   data/           # Static species data
   i18n/           # Locale files (en, it)
@@ -91,4 +97,4 @@ src-tauri/        # Tauri / Rust backend
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
