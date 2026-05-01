@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="1024" height="1024" rx="220" ry="220" fill="url(#bg)"/>
+
+  <!--
+    Monstera leaf — clearly elongated (614 tall × 424 wide, ratio 1.45:1)
+    Pointed tip at (512,126), widest at y≈420, base at (512,740)
+    Stem down to (512,876)
+
+    Fenestration holes (evenodd cutout):
+      Left  — center (402,448) rx=50 ry=86
+      Right — center (622,448) rx=50 ry=86
+  -->
+  <path
+    fill="white"
+    fill-rule="evenodd"
+    d="
+      M512,126
+      C516,126 724,228 724,420
+      C724,582 642,722 512,740
+      C382,722 300,582 300,420
+      C300,228 508,126 512,126
+      Z
+
+      M352,448
+      C352,400 374,362 402,362
+      C430,362 452,400 452,448
+      C452,496 430,534 402,534
+      C374,534 352,496 352,448
+      Z
+
+      M572,448
+      C572,400 594,362 622,362
+      C650,362 672,400 672,448
+      C672,496 650,534 622,534
+      C594,534 572,496 572,448
+      Z
+    "
+  />
+
+  <!-- Petiole / stem -->
+  <rect x="491" y="736" width="42" height="140" rx="21" fill="white"/>
+
+  <!-- Midrib (runs full leaf height, breaks up the symmetry) -->
+  <line
+    x1="512" y1="134"
+    x2="512" y2="738"
+    stroke="#065f46"
+    stroke-width="22"
+    stroke-linecap="round"
+    opacity="0.38"
+  />
+
+  <!-- Lateral veins (4 pairs, radiating from midrib) -->
+  <g stroke="#065f46" stroke-width="13" stroke-linecap="round" opacity="0.22">
+    <line x1="512" y1="300" x2="420" y2="265"/>
+    <line x1="512" y1="300" x2="604" y2="265"/>
+    <line x1="512" y1="420" x2="348" y2="378"/>
+    <line x1="512" y1="420" x2="676" y2="378"/>
+    <line x1="512" y1="540" x2="370" y2="512"/>
+    <line x1="512" y1="540" x2="654" y2="512"/>
+    <line x1="512" y1="650" x2="414" y2="632"/>
+    <line x1="512" y1="650" x2="610" y2="632"/>
+  </g>
+</svg>
