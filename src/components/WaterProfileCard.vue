@@ -156,11 +156,11 @@
 
           <!-- Precise values toggle -->
           <button
-            class="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-600 transition-colors mb-3"
+            class="flex items-center gap-2 w-full text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors mt-2 mb-1 py-3 px-1"
             @click="showAdvanced = !showAdvanced"
           >
             <i
-              class="mdi text-sm transition-transform"
+              class="mdi text-base transition-transform"
               :class="showAdvanced ? 'mdi-chevron-down' : 'mdi-chevron-right'"
             />
             {{ t('water_guide.advanced_label') }}
@@ -174,10 +174,10 @@
             @leave="onAdvancedLeave"
             @after-leave="onAdvancedAfterLeave"
           >
-            <div v-if="showAdvanced" class="space-y-3 mb-6">
-              <div class="grid grid-cols-2 gap-3">
+            <div v-if="showAdvanced" class="space-y-0 mb-6">
+              <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-sm font-medium text-slate-500 block mb-1.5">
+                  <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_mgl') }}
                   </label>
                   <input
@@ -186,12 +186,12 @@
                     min="0"
                     max="2000"
                     :placeholder="t('water_guide.field_mgl_placeholder')"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
+                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                     @input="onMgLInput"
                   />
                 </div>
                 <div>
-                  <label class="text-sm font-medium text-slate-500 block mb-1.5">
+                  <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_ph') }}
                   </label>
                   <input
@@ -201,11 +201,11 @@
                     max="14"
                     step="0.1"
                     :placeholder="t('water_guide.field_ph_placeholder')"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
+                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                   />
                 </div>
                 <div>
-                  <label class="text-sm font-medium text-slate-500 block mb-1.5">
+                  <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_ca') }}
                   </label>
                   <input
@@ -214,11 +214,11 @@
                     min="0"
                     max="500"
                     :placeholder="t('water_guide.field_ca_placeholder')"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
+                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                   />
                 </div>
                 <div>
-                  <label class="text-sm font-medium text-slate-500 block mb-1.5">
+                  <label class="text-sm font-medium text-slate-500 block mb-2">
                     {{ t('water_guide.field_mg') }}
                   </label>
                   <input
@@ -227,7 +227,7 @@
                     min="0"
                     max="200"
                     :placeholder="t('water_guide.field_mg_placeholder')"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
+                    class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-4 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent transition-shadow"
                   />
                 </div>
               </div>
