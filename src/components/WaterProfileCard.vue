@@ -157,26 +157,27 @@
 
           </div>
 
-          <!-- Precise values toggle -->
-          <button
-            class="flex items-center gap-2 w-full text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors py-3 px-1"
-            @click="showAdvanced = !showAdvanced"
-          >
-            <i
-              class="mdi text-base transition-transform"
-              :class="showAdvanced ? 'mdi-chevron-down' : 'mdi-chevron-right'"
-            />
-            {{ t('water_guide.advanced_label') }}
-          </button>
+          <!-- Precise values toggle + fields grouped together -->
+          <div>
+            <button
+              class="flex items-center gap-2 w-full text-sm font-medium text-slate-600 hover:text-slate-700 transition-colors py-3 px-1"
+              @click="showAdvanced = !showAdvanced"
+            >
+              <i
+                class="mdi text-base transition-transform"
+                :class="showAdvanced ? 'mdi-chevron-down' : 'mdi-chevron-right'"
+              />
+              {{ t('water_guide.advanced_label') }}
+            </button>
 
-          <Transition
-            @before-enter="onAdvancedBeforeEnter"
-            @enter="onAdvancedEnter"
-            @after-enter="onAdvancedAfterEnter"
-            @before-leave="onAdvancedBeforeLeave"
-            @leave="onAdvancedLeave"
-            @after-leave="onAdvancedAfterLeave"
-          >
+            <Transition
+              @before-enter="onAdvancedBeforeEnter"
+              @enter="onAdvancedEnter"
+              @after-enter="onAdvancedAfterEnter"
+              @before-leave="onAdvancedBeforeLeave"
+              @leave="onAdvancedLeave"
+              @after-leave="onAdvancedAfterLeave"
+            >
             <div v-if="showAdvanced" class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="text-sm font-medium text-slate-500 block mb-2">
@@ -233,7 +234,8 @@
                   />
                 </div>
             </div>
-          </Transition>
+            </Transition>
+          </div>
 
           <!-- Action buttons -->
           <div class="flex gap-2 pb-4">
