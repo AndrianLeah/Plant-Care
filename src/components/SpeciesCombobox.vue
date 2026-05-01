@@ -182,38 +182,3 @@ function selectSpecies(s: PlantSpecies) {
   searchQuery.value = ''
 }
 </script>
-
-  () => find(PLANT_SPECIES, { id: props.modelValue }) ?? null,
-)
-
-const filteredSpecies = computed(() => {
-  const q = searchQueryDebounced.value.trim().toLowerCase()
-  const base = q
-    ? PLANT_SPECIES.filter(
-        (s) =>
-          t(`species.${s.id}.name`).toLowerCase().includes(q) ||
-          s.scientificName.toLowerCase().includes(q),
-      )
-    : PLANT_SPECIES
-  return orderBy(base, [(s) => t(`species.${s.id}.name`).toLowerCase()])
-})
-
-function openSearch() {
-  isSearching.value = true
-  showDropdown.value = true
-  searchQuery.value = ''
-  nextTick(() => searchInput.value?.focus())
-}
-
-function onFocus() {
-  isSearching.value = true
-  showDropdown.value = true
-}
-
-function selectSpecies(s: PlantSpecies) {
-  emit('update:modelValue', s.id)
-  isSearching.value = false
-  showDropdown.value = false
-  searchQuery.value = ''
-}
-</script>
